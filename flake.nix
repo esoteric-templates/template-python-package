@@ -6,14 +6,15 @@
     flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { nixpkgs, flake-utils, ... }:
+  outputs = { self, nixpkgs, flake-utils, ... }:
     flake-utils.lib.eachDefaultSystem (system:
     let
       pkgs = import nixpkgs { inherit system; };
+      revision = self.shortRev or "dirty";
     in {
       packages.default = pkgs.python3Packages.buildPythonPackage {
         pname = "template";
-        version = "0.1.0";
+        version = revision;
         src = ./.;
 
         format = "pyproject";
