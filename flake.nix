@@ -23,6 +23,14 @@
           wheel
         ];
 
+        checkInputs = with pkgs.python3Packages; [
+          pytest
+        ];
+
+        checkPhase = ''
+          ${pkgs.python3Packages.pytest}/bin/pytest
+        '';
+
         meta = with pkgs.lib; {
           description = "A template Python package";
           license = licenses.agpl3Only;
@@ -43,6 +51,7 @@
           source .venv/bin/activate
 
           pip install -r requirements.txt
+          pip install -r requirements-dev.txt
         '';
       };
     });
