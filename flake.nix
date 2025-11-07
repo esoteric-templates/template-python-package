@@ -10,7 +10,7 @@
     flake-utils.lib.eachDefaultSystem (system:
     let
       pkgs = import nixpkgs { inherit system; };
-      revision = self.shortRev or "dirty";
+      revision = self.shortRev or self.dirtyRev or "unknown";
     in {
       packages.default = pkgs.python3Packages.buildPythonPackage {
         pname = "template";
