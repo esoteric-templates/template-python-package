@@ -24,6 +24,9 @@
           wheel
         ];
 
+        propagatedBuildInputs = with pkgs.python3Packages; [
+        ];
+
         checkInputs = with pkgs.python3Packages; [
           pytest
         ];
@@ -39,21 +42,12 @@
       };
 
       devShells.default = pkgs.mkShell {
+        inputsFrom = [ self.packages.${system}.default ];
+
         buildInputs = with pkgs; [
           python3
-          python3Packages.pip
-          python3Packages.virtualenv
+          python3Packages.pytest
         ];
-
-        shellHook = ''
-          rm -rf .venv/
-          python -m venv .venv/
-
-          source .venv/bin/activate
-
-          pip install -r requirements.txt
-          pip install -r requirements-dev.txt
-        '';
       };
     });
 }
