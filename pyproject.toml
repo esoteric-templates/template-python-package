@@ -1,19 +1,12 @@
-[build-system]
-requires = ["setuptools", "wheel"]
-
 [project]
 name = "template"
 version = "0.0.0"
 description = "A template Python package"
 readme = "README.md"
-requires-python = ">=3.13.9"
 license = "AGPL-3.0-only"
 license-files = ["LICENSE.txt", "NOTICE.txt"]
 authors = [
   { name = "Author", email = "author@example.org" },
-]
-
-dependencies = [
 ]
 
 [project.urls]
