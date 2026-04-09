@@ -1,6 +1,7 @@
 [project]
+dynamic = ["version"]
+
 name = "template"
-version = "0.0.0"
 description = "A template Python package"
 readme = "README.md"
 license = "AGPL-3.0-only"
@@ -15,6 +16,9 @@ authors = [
 
 # [project.scripts]
 # template = "template.__main__:main"
+
+[tool.setuptools.dynamic]
+version = { attr = "template.__version__" }
 
 [tool.setuptools]
 packages = { find = { include = ["template*"] } }
