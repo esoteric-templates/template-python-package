@@ -9,12 +9,13 @@
   outputs = { self, nixpkgs, flake-utils, ... }:
     flake-utils.lib.eachDefaultSystem (system:
     let
+      pname = "template";
       pkgs = import nixpkgs { inherit system; };
-      revision = self.shortRev or self.dirtyShortRev or "unknown";
     in {
       packages.default = pkgs.python3Packages.buildPythonPackage {
-        pname = "template";
-        version = revision;
+        inherit pname;
+
+        version = nixpkgs.lib.removeSuffix "\n" "${builtins.readFile ./${pname}/assets/version.txt}";
         src = ./.;
 
         format = "pyproject";
