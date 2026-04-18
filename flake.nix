@@ -29,12 +29,8 @@
 				];
 
 				checkInputs = with pkgs.python3Packages; [
-					pytest
+					pytestCheckHook
 				];
-
-				checkPhase = ''
-					${pkgs.python3Packages.pytest}/bin/pytest
-				'';
 
 				meta = with pkgs.lib; {
 					description = "Template Python package";
