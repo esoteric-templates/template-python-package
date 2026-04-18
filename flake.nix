@@ -44,11 +44,6 @@
 
       devShells.default = pkgs.mkShell {
         inputsFrom = [ self.packages.${system}.default ];
-
-        buildInputs = with pkgs; [
-          python3
-          python3Packages.pytest
-        ];
       };
     });
 }
