@@ -15,7 +15,7 @@
 			packages.default = pkgs.python3Packages.buildPythonPackage {
 				inherit pname;
 
-				version = nixpkgs.lib.removeSuffix "\n" "${builtins.readFile ./${pname}/assets/version.txt}";
+				version = pkgs.lib.removeSuffix "\n" "${builtins.readFile ./${pname}/assets/version.txt}";
 				src = ./.;
 
 				format = "pyproject";
