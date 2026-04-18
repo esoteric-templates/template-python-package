@@ -26,7 +26,3 @@ include-package-data = true
 
 [tool.setuptools.package-data]
 "template" = ["assets/**/*"]
-
-[tool.pytest.ini_options]
-testpaths = ["tests"]
-pythonpath = ["."]
