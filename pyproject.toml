@@ -2,7 +2,7 @@
 dynamic = ["version"]
 
 name = "template"
-description = "A template Python package"
+description = "Template Python package"
 readme = "README.md"
 license = "AGPL-3.0-only"
 authors = [

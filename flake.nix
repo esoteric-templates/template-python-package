@@ -1,5 +1,5 @@
 {
-  description = "A template Python package";
+  description = "Template Python package";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
@@ -37,7 +37,7 @@
         '';
 
         meta = with pkgs.lib; {
-          description = "A template Python package";
+          description = "Template Python package";
           license = licenses.agpl3Only;
         };
       };
