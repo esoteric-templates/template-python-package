@@ -1,49 +1,49 @@
 {
-  description = "Template Python package";
+	description = "Template Python package";
 
-  inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
-    flake-utils.url = "github:numtide/flake-utils";
-  };
+	inputs = {
+		nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+		flake-utils.url = "github:numtide/flake-utils";
+	};
 
-  outputs = { self, nixpkgs, flake-utils, ... }:
-    flake-utils.lib.eachDefaultSystem (system:
-    let
-      pname = "template";
-      pkgs = import nixpkgs { inherit system; };
-    in {
-      packages.default = pkgs.python3Packages.buildPythonPackage {
-        inherit pname;
+	outputs = { self, nixpkgs, flake-utils, ... }:
+		flake-utils.lib.eachDefaultSystem (system:
+		let
+			pname = "template";
+			pkgs = import nixpkgs { inherit system; };
+		in {
+			packages.default = pkgs.python3Packages.buildPythonPackage {
+				inherit pname;
 
-        version = nixpkgs.lib.removeSuffix "\n" "${builtins.readFile ./${pname}/assets/version.txt}";
-        src = ./.;
+				version = nixpkgs.lib.removeSuffix "\n" "${builtins.readFile ./${pname}/assets/version.txt}";
+				src = ./.;
 
-        format = "pyproject";
+				format = "pyproject";
 
-        nativeBuildInputs = with pkgs.python3Packages; [
-          setuptools
-          wheel
-        ];
+				nativeBuildInputs = with pkgs.python3Packages; [
+					setuptools
+					wheel
+				];
 
-        propagatedBuildInputs = with pkgs.python3Packages; [
-        ];
+				propagatedBuildInputs = with pkgs.python3Packages; [
+				];
 
-        checkInputs = with pkgs.python3Packages; [
-          pytest
-        ];
+				checkInputs = with pkgs.python3Packages; [
+					pytest
+				];
 
-        checkPhase = ''
-          ${pkgs.python3Packages.pytest}/bin/pytest
-        '';
+				checkPhase = ''
+					${pkgs.python3Packages.pytest}/bin/pytest
+				'';
 
-        meta = with pkgs.lib; {
-          description = "Template Python package";
-          license = licenses.agpl3Only;
-        };
-      };
+				meta = with pkgs.lib; {
+					description = "Template Python package";
+					license = licenses.agpl3Only;
+				};
+			};
 
-      devShells.default = pkgs.mkShell {
-        inputsFrom = [ self.packages.${system}.default ];
-      };
-    });
+			devShells.default = pkgs.mkShell {
+				inputsFrom = [ self.packages.${system}.default ];
+			};
+		});
 }
