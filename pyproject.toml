@@ -22,7 +22,6 @@ version = { attr = "template.__version__" }
 
 [tool.setuptools]
 packages = { find = { include = ["template*"] } }
-include-package-data = true
 
 [tool.setuptools.package-data]
 "template" = ["assets/**/*"]
