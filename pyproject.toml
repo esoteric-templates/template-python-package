@@ -20,4 +20,4 @@ authors = [
 version = { attr = "template.__version__" }
 
 [tool.setuptools.package-data]
-"template" = ["assets/**/*"]
+template = ["assets/**/*"]
