@@ -9,5 +9,6 @@ build:
   image: nixos/nix:2.18.1
   script:
     - nix --extra-experimental-features 'nix-command flakes' build
-    # - ./result/bin/template --version
-    # - ./result/bin/template --help
+    # Remove if the project is a library.
+    - ./result/bin/template --version
+    - ./result/bin/template --help
