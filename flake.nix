@@ -10,7 +10,7 @@
 		flake-utils.lib.eachDefaultSystem (system:
 		let
 			pname = "template";
-			pkgs = import nixpkgs { inherit system; };
+			pkgs = nixpkgs.legacyPackages.${system};
 		in {
 			packages.default = pkgs.python3Packages.buildPythonPackage {
 				inherit pname;
